@@ -5,7 +5,7 @@ import { useState, useEffect, useRef } from 'react';
 export default function ExperiencePage() {
   const [hoveredItem, setHoveredItem] = useState<number | null>(null);
   const [isMounted, setIsMounted] = useState(false);
-  const sectionRefs = useRef([]);
+  const sectionRefs = useRef<HTMLElement[]>([]);
   
   useEffect(() => {
     setIsMounted(true);
@@ -34,7 +34,7 @@ export default function ExperiencePage() {
   }, []);
 
   // Helper function to assign refs
-  const addToRefs = (el) => {
+  const addToRefs = (el: HTMLElement | null) => {
     if (el && !sectionRefs.current.includes(el)) {
       sectionRefs.current.push(el);
     }
