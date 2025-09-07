@@ -46,7 +46,7 @@ export default function ContactPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
           {/* Contact Form */}
-          <Card className="border border-[#E5E5E5] shadow-sm hover:shadow-md hover:border-[#C49A6C] transition-all duration-500 animate-slide-in-left">
+          <Card className="bg-white border border-[#E5E5E5] shadow-sm hover:shadow-md hover:border-[#C49A6C] transition-all duration-500 animate-slide-in-left">
             <CardContent className="p-4 sm:p-6 md:p-8">
               <h3 className="text-xl sm:text-2xl font-semibold text-[#4A2C2A] mb-4 md:mb-6 font-poppins">Send a Message</h3>
               <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
@@ -100,7 +100,7 @@ export default function ContactPage() {
 
                 <Button
                   type="submit"
-                  className="w-full bg-[#4A2C2A] hover:bg-[#5a3c3a] py-3 text-base sm:text-lg font-medium transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]"
+                  className="w-full bg-[#4A2C2A] hover:bg-[#5a3c3a] text-gray-100 py-3 text-base sm:text-lg font-medium transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]"
                 >
                   Send Message
                 </Button>
@@ -110,7 +110,7 @@ export default function ContactPage() {
 
           {/* Contact Information */}
           <div className="space-y-6 md:space-y-8">
-            <Card className="border border-[#E5E5E5] shadow-sm hover:shadow-md hover:border-[#C49A6C] transition-all duration-500 animate-slide-in-right delay-100">
+            <Card className="border border-[#E5E5E5] bg-white shadow-sm hover:shadow-md hover:border-[#C49A6C] transition-all duration-500 animate-slide-in-right delay-100">
               <CardContent className="p-4 sm:p-6 md:p-8">
                 <h3 className="text-xl sm:text-2xl font-semibold text-[#4A2C2A] mb-4 md:mb-6 font-poppins">Contact Information</h3>
                 
