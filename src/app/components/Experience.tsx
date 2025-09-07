@@ -1,17 +1,25 @@
 'use client'
 import { Card, CardContent } from '@/components/ui/card';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 
 export default function ExperiencePage() {
   const [hoveredItem, setHoveredItem] = useState<number | null>(null);
   const [isMounted, setIsMounted] = useState(false);
   const sectionRefs = useRef<HTMLElement[]>([]);
+  const observerRef = useRef<IntersectionObserver | null>(null);
   
+  // Helper function to assign refs
+  const addToRefs = useCallback((el: HTMLElement | null) => {
+    if (el && !sectionRefs.current.includes(el)) {
+      sectionRefs.current.push(el);
+    }
+  }, []);
+
   useEffect(() => {
     setIsMounted(true);
     
     // Set up intersection observer for scroll animations
-    const observer = new IntersectionObserver(
+    observerRef.current = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
@@ -22,23 +30,19 @@ export default function ExperiencePage() {
       { threshold: 0.1 }
     );
 
-    sectionRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
+    const currentSectionRefs = sectionRefs.current;
+    const currentObserver = observerRef.current;
+
+    currentSectionRefs.forEach((ref) => {
+      if (ref) currentObserver.observe(ref);
     });
 
     return () => {
-      sectionRefs.current.forEach((ref) => {
-        if (ref) observer.unobserve(ref);
+      currentSectionRefs.forEach((ref) => {
+        if (ref) currentObserver.unobserve(ref);
       });
     };
   }, []);
-
-  // Helper function to assign refs
-  const addToRefs = (el: HTMLElement | null) => {
-    if (el && !sectionRefs.current.includes(el)) {
-      sectionRefs.current.push(el);
-    }
-  };
 
   const experiences = [
     {

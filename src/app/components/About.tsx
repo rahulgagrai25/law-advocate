@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 
@@ -7,12 +7,20 @@ export default function AboutPage() {
   const [isMounted, setIsMounted] = useState(false);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
   const sectionRefs = useRef<HTMLElement[]>([]);
+  const observerRef = useRef<IntersectionObserver | null>(null);
+
+  // Helper function to assign refs
+  const addToRefs = useCallback((el: HTMLElement | null) => {
+    if (el && !sectionRefs.current.includes(el)) {
+      sectionRefs.current.push(el);
+    }
+  }, []);
 
   useEffect(() => {
     setIsMounted(true);
     
     // Set up intersection observer for scroll animations
-    const observer = new IntersectionObserver(
+    observerRef.current = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
@@ -23,23 +31,19 @@ export default function AboutPage() {
       { threshold: 0.1 }
     );
 
-    sectionRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
+    const currentSectionRefs = sectionRefs.current;
+    const currentObserver = observerRef.current;
+
+    currentSectionRefs.forEach((ref) => {
+      if (ref) currentObserver.observe(ref);
     });
 
     return () => {
-      sectionRefs.current.forEach((ref) => {
-        if (ref) observer.unobserve(ref);
+      currentSectionRefs.forEach((ref) => {
+        if (ref) currentObserver.unobserve(ref);
       });
     };
   }, []);
-
-  // Helper function to assign refs
-  const addToRefs = (el: HTMLElement | null) => {
-    if (el && !sectionRefs.current.includes(el)) {
-      sectionRefs.current.push(el);
-    }
-  };
 
   return (
     <section id='about' className="bg-[#F9F5F0] py-8 md:py-12 lg:py-16 px-4 sm:px-6 overflow-hidden">

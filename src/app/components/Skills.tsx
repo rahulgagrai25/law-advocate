@@ -145,7 +145,7 @@ export default function SkillsPage() {
                 </div>
                 <h4 className="font-poppins text-lg font-semibold mb-2">Strategic</h4>
                 <p className="font-inter text-sm">
-                  Developing comprehensive legal strategies tailored to each client's unique situation
+                  Developing comprehensive legal strategies tailored to each client&apos;s unique situation
                 </p>
               </div>
               

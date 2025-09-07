@@ -168,7 +168,7 @@ export default function NewsUpdatesPage() {
                 <input 
                   type="email" 
                   placeholder="Your email address" 
-                  className="flex-1 px-4 py-2 rounded text-[#4A2C2A] font-inter border border-[#E5E5E5] focus:border-[#C49A6C] focus:outline-none transition-all duration-300 focus:scale-[1.02]"
+                  className="flex-1 px-4 py-2 rounded text-[#ffffff] font-inter border border-[#E5E5E5] focus:border-[#C49A6C] focus:outline-none transition-all duration-300 focus:scale-[1.02]"
                 />
                 <Button className="bg-[#C49A6C] hover:bg-[#d4aa7c] text-white whitespace-nowrap transition-all duration-300 transform hover:scale-105 active:scale-95">
                   Subscribe
