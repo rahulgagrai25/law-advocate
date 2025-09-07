@@ -76,7 +76,7 @@ export default function AboutPage() {
               ref={addToRefs}
             >
               <Image
-                src="/lawyer2.png"
+                src="/3.png"
                 alt="Garima Dhankhar - Professional Lawyer"
                 fill
                 className="object-cover transition-transform duration-700 hover:scale-105"

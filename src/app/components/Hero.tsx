@@ -56,7 +56,7 @@ export default function HeroPage() {
               }`}
             >
               <Image
-                src="/lawyer.png" // Replace with actual image path
+                src="/1.png" // Replace with actual image path
                 alt="Garima Dhankhar - Professional Lawyer"
                 fill
                 className="object-cover transition-transform duration-700 hover:scale-105"
